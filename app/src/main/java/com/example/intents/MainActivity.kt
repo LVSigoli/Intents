@@ -6,6 +6,7 @@ import android.content.Intent.ACTION_DIAL
 import android.content.Intent.ACTION_VIEW
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -71,5 +72,9 @@ class MainActivity : AppCompatActivity() {
 
         callIntent.data = Uri.parse(number)
         startActivity(callIntent)
+    }
+
+    private fun OnCreateMenuOption(menu: Menu){
+        menuInflater.inflate(R.menu.menu_main, menu)
     }
 }
