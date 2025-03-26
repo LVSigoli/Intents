@@ -7,7 +7,9 @@ import com.example.intents.Extras.PARAMETER_EXTRA
 import com.example.intents.databinding.ActivityParameterBinding
 
 class ParameterActivity : AppCompatActivity() {
-    private lateinit var apb: ActivityParameterBinding
+   private val apb: ActivityParameterBinding by lazy {
+       ActivityParameterBinding.inflate(layoutInflater)
+   }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
