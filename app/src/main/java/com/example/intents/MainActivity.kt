@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -29,6 +30,16 @@ class MainActivity : AppCompatActivity() {
 
             parameterArl.launch(it)
         }
+
+        parameterArl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result ->
+            if(result.resultCode === RESULT_OK){
+                result.data?.getStringExtra(PARAMETER_EXTRA).let {
+                    binding.parameterTv.text = it
+                }
+            }
+        }
+
+
     }
 }
 
