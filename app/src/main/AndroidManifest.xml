@@ -20,7 +20,7 @@
 
         <activity android:name=".ParameterActivity" android:exported="true">
             <intent-filter>
-                <action android:name="OPEN_PARAMETER_ACTIVITY_OPTION" />
+                <action android:name="OPEN_PARAMETER_ACTIVITY_ACTION" />
             </intent-filter>
         </activity>
 
