@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.view_mi -> {
-                startActivity(browserIntent())
+                browserIntent()?.let { startActivity(it) }
                 true
             }
 
@@ -129,8 +129,13 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun browserIntent(): Intent {
-        val url = Uri.parse(binding.parameterTv.text.toString())
-        return Intent(ACTION_VIEW, url)
+    private fun browserIntent(): Intent? {
+        val urlText = binding.parameterTv.text.toString().trim()
+        return if (urlText.startsWith("http://") || urlText.startsWith("https://")) {
+            Intent(ACTION_VIEW, Uri.parse(urlText))
+        } else {
+            Toast.makeText(this, "URL inválida!", Toast.LENGTH_SHORT).show()
+            null
+        }
     }
 }
